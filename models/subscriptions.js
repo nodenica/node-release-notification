@@ -11,7 +11,6 @@ exports.setup = function(_mongoose, _db) {
         unique: true
       }
     },
-    name: String,
     token: String,
     active: {
       type: Boolean,
