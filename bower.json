@@ -1,0 +1,24 @@
+{
+  "name": "node-release-notification",
+  "main": "index.js",
+  "version": "0.0.1",
+  "homepage": "https://github.com/nodenica/node-release-notification",
+  "authors": [
+    "Paulo McNally <paulomcnally@gmail.com>"
+  ],
+  "description": "node.js release notification",
+  "keywords": [
+    "node",
+    "release",
+    "notification"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/components",
+    "test",
+    "tests"
+  ]
+}
