@@ -43,3 +43,7 @@ p {
 strong {
   color: #80bd01;
 }
+
+.center-text {
+  text-align: center;
+}
