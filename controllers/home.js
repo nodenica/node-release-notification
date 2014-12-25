@@ -21,7 +21,7 @@ exports.home = function(req, res) {
       version = cache;
     }
     res.render('index', {
-      title: 'Hey',
+      title: 'Releases notifications of node.js',
       message: 'Hello there!',
       version: version
     });
