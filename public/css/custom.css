@@ -1,0 +1,45 @@
+body {
+  background-color: #303030;
+}
+
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
+
+.email, .button{
+  border-radius: 0;
+  height: 40px;
+  outline: 0;
+}
+
+.email {
+  border: 2px solid #80bd01;
+}
+
+.button:active {
+  outline: 0;
+}
+
+.button {
+  background-color: #80bd01;
+  border: 2px solid #80bd01;
+  color: black;
+  font-weight: bold;
+}
+
+.button:hover {
+  background-color: #73a53e;
+  border: 2px solid #73a53e;
+}
+
+p {
+  color: #CCCCCC;
+}
+
+strong {
+  color: #80bd01;
+}
