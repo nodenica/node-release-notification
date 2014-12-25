@@ -1,14 +1,18 @@
-html
+html(ng-app="nodeApp")
   head
     title!= title
     link(rel="stylesheet", href="components/bootstrap/dist/css/bootstrap.min.css")
     link(rel="stylesheet", href="/css/custom.css")
   body.vertical-center
-    .container
+    .container(ng-controller="AppController")
       .row
         .col-md-6.col-md-offset-3.col-sm-6.col-sm-offset-3
           p Receive releases notifications of node.js 
             strong (#{version})
           div(class="form-group")
-            input(type="text" class="col-lg-10 col-md-8 col-sm-8 col-xs-8 email" placeholder="Email")
-            button(type="submit" class="btn btn-default col-lg-2 col-md-4 col-sm-4 col-xs-4 button") Subscribe
+            input(type="text" class="col-lg-10 col-md-8 col-sm-8 col-xs-8 email" placeholder="Email", ng-model="email")
+            button(type="submit" class="btn btn-default col-lg-2 col-md-4 col-sm-4 col-xs-4 button", ng-click="add()") Subscribe
+          p(ng-show="show")
+            {{ message }}
+    script(src="components/angular/angular.min.js")
+    script(src="js/app.js")
