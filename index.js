@@ -1,14 +1,20 @@
 var http = require('http');
 var express = require('express');
+var bodyParser = require('body-parser');
 var controllers = require('./controllers');
 
 var app = express();
-
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
+app.use(bodyParser.json());
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', controllers.home.home);
+app.post('/add', controllers.home.add);
+app.get('/validate/:token', controllers.home.validate);
 
 var server = app.listen(3000, function() {
 
