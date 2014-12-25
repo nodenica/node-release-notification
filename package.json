@@ -1,0 +1,24 @@
+{
+  "name": "node-release-notification",
+  "version": "0.0.1",
+  "description": "node.js release notification",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nodenica/node-release-notification.git"
+  },
+  "keywords": [
+    "node",
+    "release",
+    "notification"
+  ],
+  "author": "Paulo McNally <paulomcnally@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nodenica/node-release-notification/issues"
+  },
+  "homepage": "https://github.com/nodenica/node-release-notification"
+}
