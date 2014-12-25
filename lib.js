@@ -3,8 +3,9 @@ var nodemailer = require('nodemailer');
 var fs = require('fs');
 var util = require('util');
 
-var Lib = function() {
+var Lib = function(model) {
   var self = this;
+  self.model = model;
 
   self.url = 'http://nodejs.org/dist/latest/';
 
@@ -48,20 +49,20 @@ var Lib = function() {
     });
   };
 
-  self.sendEmail = function(subject, message) {
+  self.sendEmail = function(to, subject, message) {
 
     var transporter = nodemailer.createTransport({
       service: 'SendGrid',
       auth: {
-        user: process.env.USER,
-        pass: process.env.PASS
+        user: process.env.SENDGRID_SMTP_USERNAME,
+        pass: process.env.SENDGRID_SMTP_PASSWORD
       }
     });
 
     // setup e-mail data with unicode symbols
     var mailOptions = {
-      from: 'Node Release <node-release@nodenica.com>', // sender address
-      to: 'paulomcnally@gmail.com', // list of receivers
+      from: 'Node Releases <node-releases@nodenica.com>', // sender address
+      to: to, // list of receivers
       subject: subject, // Subject line
       text: message, // plaintext body
       html: message // html body
@@ -76,9 +77,6 @@ var Lib = function() {
         console.log('Message sent: ' + info.response);
       }
     });
-
-    console.log(subject);
-    console.log(message);
   };
 
   self.check = function() {
@@ -95,13 +93,24 @@ var Lib = function() {
             console.log(':(');
           }
           else {
-            self.sendEmail('✓ The page has been changed', self.url);
             self.setCache(hash, function(error, response) {
               if (error) {
                 self.sendEmail('✗ setCache Error', error);
               }
               else {
-                console.log('Cache created!');
+                self.model.find({active: true}, function(err, subscribers) {
+                  if (err) {
+                    console.log(err);
+                  }
+                  else if (subscribers.lengt > 0) {
+                    subscribers.forEach(function(subscriber) {
+                      var emailSubject = 'New node.js Release ' + hash;
+                      var emailMessage = 'node.js ' + hash +
+                      ' http://nodejs.org/dist/latest/';
+                      self.sendEmail(subscriber.email, emailSubject, emailMessage);
+                    });
+                  }
+                });
               }
             });
           }
