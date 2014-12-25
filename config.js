@@ -6,4 +6,4 @@ module.exports = {
     port: '27017',
     db: 'releases'
   }
-}
+};
