@@ -51,7 +51,7 @@ exports.add = function(req, res) {
       var emailSubject = 'Validate you\'re subscription';
       var emailMessage = 'Please validate you\'re ' +
       'node.js releases subscription. ' +
-      'http://release.nodenica.com/validate/' + token;
+      'http://node-releases.cloudapp.net/validate/' + token;
       lib.sendEmail(req.body.email, emailSubject, emailMessage);
     }
     res.send(JSON.stringify(response));
